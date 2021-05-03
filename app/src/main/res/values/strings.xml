@@ -5,4 +5,5 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="clear">Clear</string>
+    <string name="def_image">def_image</string>
 </resources>
