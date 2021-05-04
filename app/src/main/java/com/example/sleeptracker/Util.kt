@@ -103,5 +103,8 @@ fun convertLongToDateString(systemTime: Long): String {
  * 6. create list_item XML file ; attach with Entity
  * 7. create Adapter; update fragment
  * 8. create bindingAdapter ; update list_item
- *
+ * 9. add clickListener :
+ *      create new clickListener ; add var and onclick in item_view xml
+ *      let adapter know about clickListener class; modify bind fun
+ *      pass clickListener as parameter to adapter in fragment
  */
