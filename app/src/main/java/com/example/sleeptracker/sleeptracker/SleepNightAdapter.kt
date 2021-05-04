@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sleeptracker.database.SleepNightEntity
 import com.example.sleeptracker.databinding.ListItemSleepTrackerBinding
 
-class SleepNightAdapter : ListAdapter<SleepNightEntity, SleepNightAdapter.ViewHolder>(SleepNightDiffUtil()){
+class SleepNightAdapter : ListAdapter<SleepNightEntity, SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -39,7 +39,7 @@ class SleepNightAdapter : ListAdapter<SleepNightEntity, SleepNightAdapter.ViewHo
 
 }
 
-class SleepNightDiffUtil : DiffUtil.ItemCallback<SleepNightEntity>(){
+class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNightEntity>() {
     override fun areItemsTheSame(oldItem: SleepNightEntity, newItem: SleepNightEntity): Boolean {
         return oldItem.nightId == newItem.nightId
     }
@@ -47,5 +47,4 @@ class SleepNightDiffUtil : DiffUtil.ItemCallback<SleepNightEntity>(){
     override fun areContentsTheSame(oldItem: SleepNightEntity, newItem: SleepNightEntity): Boolean {
         return oldItem == newItem
     }
-
 }

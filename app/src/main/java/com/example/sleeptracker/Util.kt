@@ -92,3 +92,16 @@ fun convertLongToDateString(systemTime: Long): String {
             .format(systemTime).toString()
 }
 
+
+/**
+ * STEPS:
+ * 1. enable DataBinding
+ * 2. create sleepTracker fragment; add it to navGraph
+ * 3. create entity, dao, db
+ * 4. create sleepTrackerViewModel, sleepTrackerViewModelFactory; attach it with XML
+ * 5. attach sleepTrackerViewModel + sleepTrackerViewModelFactory with fragment
+ * 6. create list_item XML file ; attach with Entity
+ * 7. create Adapter; update fragment
+ * 8. create bindingAdapter ; update list_item
+ *
+ */

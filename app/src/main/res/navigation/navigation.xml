@@ -6,5 +6,22 @@
     <fragment
         android:id="@+id/sleepTrackerFragment"
         android:name="com.example.sleeptracker.sleeptracker.SleepTrackerFragment"
-        android:label="SleepTrackerFragment" />
+        android:label="SleepTrackerFragment" >
+        <action
+            android:id="@+id/action_sleepTrackerFragment_to_sleepQualityFragment2"
+            app:destination="@id/sleepQualityFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/sleepQualityFragment2"
+        android:name="com.example.sleeptracker.sleepquality.SleepQualityFragment"
+        android:label="SleepQualityFragment" >
+        <argument
+            android:name="Id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_sleepQualityFragment2_to_sleepTrackerFragment"
+            app:destination="@id/sleepTrackerFragment"
+            app:popUpTo="@id/sleepTrackerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

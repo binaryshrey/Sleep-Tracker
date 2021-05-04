@@ -1,9 +1,8 @@
 package com.example.sleeptracker.sleeptracker
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import com.example.sleeptracker.database.SleepDatabaseDao
 import com.example.sleeptracker.database.SleepNightEntity
 import kotlinx.coroutines.*
@@ -13,8 +12,24 @@ class SleepTrackerViewModel(val dataSource : SleepDatabaseDao, application: Appl
     private val tonight = MutableLiveData<SleepNightEntity>()
     val nights = dataSource.getAllNights()
 
+
+    private val _navigateToSleepQuality = MutableLiveData<SleepNightEntity>()
+    val navigateToSleepQuality : LiveData<SleepNightEntity>
+        get() = _navigateToSleepQuality
+
+
+
     init {
         initializeTonight()
+
+
+    }
+
+    val startButtonVisible = Transformations.map(tonight){
+        it == null
+    }
+    val stopButtonVisible = Transformations.map(tonight){
+        it != null
     }
 
     private fun initializeTonight() {
@@ -25,7 +40,7 @@ class SleepTrackerViewModel(val dataSource : SleepDatabaseDao, application: Appl
 
     private suspend fun getTonightFromDataBase(): SleepNightEntity? {
         var night = dataSource.getCurrentNight()
-        if(night?.startTimeMilli != night?.endTimeMilli){
+        if(night?.endTimeMilli != night?.startTimeMilli){
             night = null
         }
         return night
@@ -36,6 +51,10 @@ class SleepTrackerViewModel(val dataSource : SleepDatabaseDao, application: Appl
     }
     private suspend fun update(night: SleepNightEntity){
         dataSource.update(night)
+    }
+
+    private suspend fun clearAll(){
+        dataSource.clear()
     }
 
 
@@ -53,8 +72,22 @@ class SleepTrackerViewModel(val dataSource : SleepDatabaseDao, application: Appl
 
             oldNight.endTimeMilli = System.currentTimeMillis()
             update(oldNight)
-
+            _navigateToSleepQuality.value = oldNight
+            Log.i("SleepTrackerViewModel",nights.value?.size.toString())
         }
+
+    }
+
+    fun onClear(){
+        viewModelScope.launch {
+            clearAll()
+            tonight.value = null
+        }
+    }
+
+
+    fun onNavigateToSleepQualityComplete(){
+        _navigateToSleepQuality.value = null
     }
 
 

@@ -1,82 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sleepQualityFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".sleepquality.SleepQualityFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="sleepQualityViewModel"
+            type="com.example.sleeptracker.sleepquality.SleepQualityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sleepQualityFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".sleepquality.SleepQualityFragment">
 
 
-    <ImageView
-        android:id="@+id/sleep0_imageView"
-        android:layout_width="@dimen/dimen_64"
-        android:layout_height="@dimen/dimen_64"
-        android:layout_marginTop="@dimen/dimen_32"
-        app:layout_constraintEnd_toStartOf="@+id/sleep1_imageView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_sleep_0"
-        android:contentDescription="@string/sleep0" />
+        <ImageView
+            android:id="@+id/sleep0_imageView"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
+            android:layout_marginTop="@dimen/dimen_32"
+            app:layout_constraintEnd_toStartOf="@+id/sleep1_imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_sleep_0"
+            android:onClick="@{() -> sleepQualityViewModel.onRatingSelected(0)}"
+            android:contentDescription="@string/sleep0" />
 
-    <ImageView
-        android:id="@+id/sleep1_imageView"
-        android:layout_width="@dimen/dimen_64"
-        android:layout_height="@dimen/dimen_64"
-        android:layout_marginTop="@dimen/dimen_32"
-        app:layout_constraintEnd_toStartOf="@+id/sleep2_imageView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/sleep0_imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_sleep_1"
-        android:contentDescription="@string/sleep1" />
+        <ImageView
+            android:id="@+id/sleep1_imageView"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
+            android:layout_marginTop="@dimen/dimen_32"
+            app:layout_constraintEnd_toStartOf="@+id/sleep2_imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/sleep0_imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_sleep_1"
+            android:onClick="@{() -> sleepQualityViewModel.onRatingSelected(1)}"
+            android:contentDescription="@string/sleep1" />
 
-    <ImageView
-        android:id="@+id/sleep2_imageView"
-        android:layout_width="@dimen/dimen_64"
-        android:layout_height="@dimen/dimen_64"
-        android:layout_marginTop="@dimen/dimen_32"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/sleep1_imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_sleep_2"
-        android:contentDescription="@string/sleep2" />
+        <ImageView
+            android:id="@+id/sleep2_imageView"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
+            android:layout_marginTop="@dimen/dimen_32"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/sleep1_imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_sleep_2"
+            android:onClick="@{() -> sleepQualityViewModel.onRatingSelected(2)}"
+            android:contentDescription="@string/sleep2" />
 
-    <ImageView
-        android:id="@+id/sleep3_imageView"
-        android:layout_width="@dimen/dimen_64"
-        android:layout_height="@dimen/dimen_64"
-        android:layout_marginTop="@dimen/dimen_32"
-        app:srcCompat="@drawable/ic_sleep_3"
-        app:layout_constraintEnd_toStartOf="@+id/sleep4_imageView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sleep0_imageView"
-        android:contentDescription="@string/sleep3" />
+        <ImageView
+            android:id="@+id/sleep3_imageView"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
+            android:layout_marginTop="@dimen/dimen_32"
+            app:srcCompat="@drawable/ic_sleep_3"
+            app:layout_constraintEnd_toStartOf="@+id/sleep4_imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{() -> sleepQualityViewModel.onRatingSelected(3)}"
+            app:layout_constraintTop_toBottomOf="@+id/sleep0_imageView"
+            android:contentDescription="@string/sleep3" />
 
-    <ImageView
-        android:id="@+id/sleep4_imageView"
-        android:layout_width="@dimen/dimen_64"
-        android:layout_height="@dimen/dimen_64"
-        android:layout_marginTop="@dimen/dimen_32"
-        app:srcCompat="@drawable/ic_sleep_4"
-        app:layout_constraintEnd_toStartOf="@+id/sleep5_imageView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/sleep3_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/sleep1_imageView"
-        android:contentDescription="@string/sleep4" />
+        <ImageView
+            android:id="@+id/sleep4_imageView"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
+            android:layout_marginTop="@dimen/dimen_32"
+            app:srcCompat="@drawable/ic_sleep_4"
+            app:layout_constraintEnd_toStartOf="@+id/sleep5_imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:onClick="@{() -> sleepQualityViewModel.onRatingSelected(4)}"
+            app:layout_constraintStart_toEndOf="@+id/sleep3_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/sleep1_imageView"
+            android:contentDescription="@string/sleep4" />
 
-    <ImageView
-        android:id="@+id/sleep5_imageView"
-        android:layout_width="@dimen/dimen_64"
-        android:layout_height="@dimen/dimen_64"
-        android:layout_marginTop="@dimen/dimen_32"
-        app:srcCompat="@drawable/ic_sleep_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/sleep4_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/sleep2_imageView"
-        android:contentDescription="@string/sleep5" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/sleep5_imageView"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
+            android:layout_marginTop="@dimen/dimen_32"
+            app:srcCompat="@drawable/ic_sleep_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:onClick="@{() -> sleepQualityViewModel.onRatingSelected(5)}"
+            app:layout_constraintStart_toEndOf="@+id/sleep4_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/sleep2_imageView"
+            android:contentDescription="@string/sleep5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

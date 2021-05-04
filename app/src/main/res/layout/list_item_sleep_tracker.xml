@@ -12,19 +12,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/listItemSleepTrackerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dimen_64"
+            android:layout_height="@dimen/dimen_64"
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_16"
+            android:contentDescription="@string/def_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_sleep_5"
-            android:contentDescription="@string/def_image"
-            app:sleepImage="@{sleep}"/>
+            app:sleepImage="@{sleep}"
+            app:srcCompat="@drawable/ic_sleep_5" />
 
         <TextView
             android:id="@+id/length_textView"
@@ -32,24 +32,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginEnd="@dimen/dimen_16"
-            android:textSize="@dimen/text_8"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
-            tools:text="Wednesday"
-            app:sleepDurationFormatted="@{sleep}"/>
+            app:sleepDurationFormatted="@{sleep}"
+            tools:text="Wednesday" />
 
         <TextView
             android:id="@+id/quality_textView"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="@dimen/dimen_16"
-            android:textSize="@dimen/text_8"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/length_textView"
-            tools:text="Excellent"
-            app:sleepQualityString="@{sleep}"/>
+            app:sleepQualityString="@{sleep}"
+            tools:text="Excellent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

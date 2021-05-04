@@ -12,14 +12,14 @@ interface SleepDatabaseDao {
     @Update
     suspend fun update(night : SleepNightEntity)
 
-    @Delete
-    suspend fun delete(night: SleepNightEntity)
+    @Query("DELETE FROM 'daily_sleep_quality_table'")
+    suspend fun clear()
 
     @Query("SELECT * FROM daily_sleep_quality_table where nightId = :key")
     suspend fun get(key : Long) : SleepNightEntity?
 
-    @Query("SELECT * from daily_sleep_quality_table WHERE nightId = :key")
-    fun getNightWithId(key: Long): LiveData<SleepNightEntity>
+//    @Query("SELECT * from daily_sleep_quality_table WHERE nightId = :key")
+//    fun getNightWithId(key: Long): LiveData<SleepNightEntity>
 
     @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC")
     fun getAllNights() : LiveData<List<SleepNightEntity>>
